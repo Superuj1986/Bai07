@@ -1,12 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
+import { SignUp , Welcome, SignIn } from "../../Bai7/screens";
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName='Welcome'>
+            <Stack.Screen 
+                name='Welcome' 
+                component={Welcome}
+                option={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen>
+              name='Sign in'
+              component={SignIn}
+              option={{
+                    headerShown:false
+                }}
+            </Stack.Screen>
+            <Stack.Screen>
+              name='Sign up'
+              component={SignUp}
+              option={{
+                    headerShown:false
+                }}
+            </Stack.Screen>
+        </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
